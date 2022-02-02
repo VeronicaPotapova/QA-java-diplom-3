@@ -13,11 +13,9 @@ public class LoginPage {
     // Локатор кнопки "Войти"
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти']")
     private SelenideElement loginButton;
-
     // Локатор ссылки "Восстановить пароль"
     @FindBy(how = How.XPATH, using = ".//a[contains(@href,'/forgot-password')]")
     private SelenideElement passwordRecovery;
-
     // Локатор поля ввода email
     @FindBy(how = How.XPATH, using = ".//input[@name='name']")
     private SelenideElement emailField;
@@ -26,6 +24,7 @@ public class LoginPage {
     private SelenideElement passwordField;
 
     // Метод нажатия на ссылку "Зарегистрироваться"
+    @Step("click on the \"Register\" button")
     public void clickRegister() {
         register.shouldBe(Condition.exist).click();
     }

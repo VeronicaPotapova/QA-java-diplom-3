@@ -23,6 +23,6 @@ public class AccountPage {
     // Метод нажатия на ссылку "Выход"
     @Step("click on the \"Exit\"")
     public void clickExitLink() {
-        exitLink.shouldBe(Condition.exist).click();
+        exitLink.shouldBe(Condition.enabled).click();
     }
 }

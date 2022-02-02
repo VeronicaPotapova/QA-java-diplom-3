@@ -12,38 +12,34 @@ import java.time.Duration;
 import static com.codeborne.selenide.Selenide.webdriver;
 
 public class RegisterPage {
-    // Локатор поля ввода name
-    @FindBy(how = How.XPATH, using = "(.//input[@name='name'])[1]")
-    private SelenideElement nameField;
     // Переменная, содержащая имя пользователя
     public String userName = RandomStringUtils.randomAlphabetic(10);
-
-    // Локатор поля ввода email
-    @FindBy(how = How.XPATH, using = "(.//input[@name='name'])[2]")
-    private SelenideElement emailField;
     // Переменная, содержащая email пользователя
     public String userEmail = RandomStringUtils.randomAlphabetic(10) + "@yandex.ru";
-
-    // Локатор поля ввода пароля
-    @FindBy(how = How.NAME, using = "Пароль")
-    private SelenideElement passwordField;
     // Переменная, содержащая пароль пользователя
     public String userPassword = RandomStringUtils.randomAlphabetic(6);
     // Переменная, содержащая некорректный пароль пользователя
     public String userErrorPassword = RandomStringUtils.randomAlphabetic(5);
     // Переменная, содержащая пустой пароль пользователя
     public String userEmptyPassword = "";
+    // Переменная, содержащая новый url после регистрации
+    public String newUrlAfterRegistered = BaseCondition.URL + "login";
 
+    // Локатор поля ввода name
+    @FindBy(how = How.XPATH, using = "(.//input[@name='name'])[1]")
+    private SelenideElement nameField;
+    // Локатор поля ввода email
+    @FindBy(how = How.XPATH, using = "(.//input[@name='name'])[2]")
+    private SelenideElement emailField;
+    // Локатор поля ввода пароля
+    @FindBy(how = How.NAME, using = "Пароль")
+    private SelenideElement passwordField;
     // Локатор кнопки "Зарегистрироваться"
     @FindBy(how = How.XPATH, using = ".//button[text()='Зарегистрироваться']")
     private SelenideElement registerButton;
-    // Переменная, содержащая новый url после регистрации
-    public String newUrlAfterRegistered = MainPage.URL + "login";
-
     // Локатор ссылки "Войти"
     @FindBy(how = How.XPATH, using = ".//a[contains(@href,'/login')]")
     private SelenideElement logIn;
-
     // Локатор надписи "Некорректный пароль"
     @FindBy(how = How.XPATH, using = ".//p[text()='Некорректный пароль']")
     private SelenideElement messageErrorPassword;
@@ -92,12 +88,14 @@ public class RegisterPage {
     }
 
     // Метод получение url страницы после регистрации пользоваетля
+    @Step("get url page after register")
     public String urlAfterRegister() {
         registerButton.shouldNotBe(Condition.exist, Duration.ofSeconds(3));
         return webdriver().driver().url();
     }
 
     // Метод регистрации пользоваетля с неверным паролем: объединяет ввод имя, email, пароля и клик по кнопке "Зарегистрироваться"
+    @Step("registration user with error password")
     public RegisterPage registerUserWithErrorPass() {
         setName(userName);
         setEmail(userEmail);
@@ -107,7 +105,8 @@ public class RegisterPage {
     }
 
     // Метод регистрации пользоваетля с пустым паролем: объединяет ввод имя, email, пароля и клик по кнопке "Зарегистрироваться"
-    public RegisterPage registerUserErrorWithEmptyPass() {
+    @Step("registration user with empty password")
+    public RegisterPage registerUserWithEmptyPass() {
         setName(userName);
         setEmail(userEmail);
         setPassword(userEmptyPassword);
@@ -116,6 +115,7 @@ public class RegisterPage {
     }
 
     // Метод поиска на странице надписи "Некорректный пароль"
+    @Step("search message \"error password\"")
     public boolean showMessageErrorPassword() {
         return messageErrorPassword.shouldBe(Condition.exist).exists();
     }
