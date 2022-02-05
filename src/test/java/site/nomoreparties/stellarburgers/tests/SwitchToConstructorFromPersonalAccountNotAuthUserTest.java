@@ -1,10 +1,12 @@
-package site.nomoreparties.stellarburgers;
+package site.nomoreparties.stellarburgers.tests;
 
 import io.qameta.allure.junit4.DisplayName;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import site.nomoreparties.stellarburgers.BaseCondition;
+import site.nomoreparties.stellarburgers.MainPage;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SwitchToConstructorFromPersonalAccountNotAuthUserTest extends BaseCondition {
 
@@ -17,7 +19,7 @@ public class SwitchToConstructorFromPersonalAccountNotAuthUserTest extends BaseC
         //Переход в конструктор
         mainPage.clickOnConstructorHeader();
 
-        MatcherAssert.assertThat("Transfer to main page is not possible", mainPage.showAssembleBurger());
+        assertThat("Transfer to main page is not possible", mainPage.showAssembleBurger());
     }
 
     @Test
@@ -29,7 +31,7 @@ public class SwitchToConstructorFromPersonalAccountNotAuthUserTest extends BaseC
         //Переход в конструктор
         mainPage.clickOnLogoStellarBurgers();
 
-        MatcherAssert.assertThat("Transfer to main page is not possible", mainPage.showAssembleBurger());
+        assertThat("Transfer to main page is not possible", mainPage.showAssembleBurger());
     }
 
 }

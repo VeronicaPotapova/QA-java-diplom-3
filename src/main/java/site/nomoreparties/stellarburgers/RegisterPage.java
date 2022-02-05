@@ -23,7 +23,7 @@ public class RegisterPage {
     // Переменная, содержащая пустой пароль пользователя
     public String userEmptyPassword = "";
     // Переменная, содержащая новый url после регистрации
-    public String newUrlAfterRegistered = BaseCondition.URL + "login";
+    public String newUrlAfterRegistered = "https://stellarburgers.nomoreparties.site/login";
 
     // Локатор поля ввода name
     @FindBy(how = How.XPATH, using = "(.//input[@name='name'])[1]")

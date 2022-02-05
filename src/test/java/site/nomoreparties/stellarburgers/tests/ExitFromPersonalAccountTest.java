@@ -1,13 +1,17 @@
-package site.nomoreparties.stellarburgers;
+package site.nomoreparties.stellarburgers.tests;
 
 import com.UserOperations;
 import io.qameta.allure.junit4.DisplayName;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import site.nomoreparties.stellarburgers.AccountPage;
+import site.nomoreparties.stellarburgers.BaseCondition;
+import site.nomoreparties.stellarburgers.LoginPage;
+import site.nomoreparties.stellarburgers.MainPage;
 
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ExitFromPersonalAccountTest extends BaseCondition {
 
@@ -35,7 +39,7 @@ public class ExitFromPersonalAccountTest extends BaseCondition {
         AccountPage accountPage = page(AccountPage.class);
         accountPage.clickExitLink();
 
-        MatcherAssert.assertThat("Exit from personal account is not possible",
+        assertThat("Exit from personal account is not possible",
                 loginPage.showLoginButton());
     }
 

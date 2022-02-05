@@ -1,10 +1,14 @@
-package site.nomoreparties.stellarburgers;
+package site.nomoreparties.stellarburgers.tests;
 
 import io.qameta.allure.junit4.DisplayName;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import site.nomoreparties.stellarburgers.BaseCondition;
+import site.nomoreparties.stellarburgers.LoginPage;
+import site.nomoreparties.stellarburgers.MainPage;
+import site.nomoreparties.stellarburgers.RegisterPage;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RegistrationUnsuccessfulTest extends BaseCondition {
 
@@ -22,7 +26,7 @@ public class RegistrationUnsuccessfulTest extends BaseCondition {
         RegisterPage registerPage = page(RegisterPage.class)
                 .registerUserWithErrorPass();
 
-        MatcherAssert.assertThat("User with error password can be registered",
+        assertThat("User with error password can be registered",
                 registerPage.showMessageErrorPassword());
     }
 
@@ -40,7 +44,7 @@ public class RegistrationUnsuccessfulTest extends BaseCondition {
         RegisterPage registerPage = page(RegisterPage.class)
                 .registerUserWithEmptyPass();
 
-        MatcherAssert.assertThat("User with error password can be registered",
+        assertThat("User with error password can be registered",
                 registerPage.showMessageErrorPassword());
     }
 

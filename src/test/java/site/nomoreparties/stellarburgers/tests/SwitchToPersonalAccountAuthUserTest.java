@@ -1,13 +1,17 @@
-package site.nomoreparties.stellarburgers;
+package site.nomoreparties.stellarburgers.tests;
 
 import com.UserOperations;
 import io.qameta.allure.junit4.DisplayName;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import site.nomoreparties.stellarburgers.AccountPage;
+import site.nomoreparties.stellarburgers.BaseCondition;
+import site.nomoreparties.stellarburgers.LoginPage;
+import site.nomoreparties.stellarburgers.MainPage;
 
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SwitchToPersonalAccountAuthUserTest extends BaseCondition {
 
@@ -32,7 +36,7 @@ public class SwitchToPersonalAccountAuthUserTest extends BaseCondition {
         mainPage.clickOnPersonalAccount();
         AccountPage accountPage = page(AccountPage.class);
 
-        MatcherAssert.assertThat("Transfer to personal account is not possible",
+        assertThat("Transfer to personal account is not possible",
                 accountPage.showProfile());
     }
 

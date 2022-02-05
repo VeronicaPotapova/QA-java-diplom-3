@@ -9,12 +9,14 @@ import org.openqa.selenium.support.How;
 import java.time.Duration;
 
 public class MainPage {
+    // Переменная, содержащая часть названия класса, при выборе раздела
+    public String partOfNameClass = "tab_tab_type_current__2BEPc";
     // Переменная, содержащая названия раздела "Булки"
-    public String sectionBun = "Булки";
+    public String sectionBuns = "Булки";
     // Переменная, содержащая названия раздела "Соусы"
-    public String sectionSauce = "Соусы";
+    public String sectionSauces = "Соусы";
     // Переменная, содержащая названия раздела "Начинки"
-    public String sectionFilling = "Начинки";
+    public String sectionFillings = "Начинки";
 
     // Локатор ссылки "Личный кабинет"
     @FindBy(how = How.XPATH, using = ".//a[contains(@href,'/account')]")
@@ -36,22 +38,31 @@ public class MainPage {
     private SelenideElement setOrder;
     // Локатор названия раздела "Булки"
     @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
-    private SelenideElement headerSectionBun;
+    private SelenideElement headerSectionBuns;
+    // Локатор блока выбранного раздела "Булки"
+    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']/..")
+    private SelenideElement headerSelectedSectionBuns;
     // Локатор блока "Булки"
     @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
-    private SelenideElement menuSectionBun;
-    // Локатор названия раздела "Соусы2
+    private SelenideElement menuSectionBuns;
+    // Локатор названия раздела "Соусы"
     @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
-    private SelenideElement headerSectionSauce;
+    private SelenideElement headerSectionSauces;
+    // Локатор блока выбранного раздела "Соусы"
+    @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']/..")
+    private SelenideElement headerSelectedSectionSauces;
     // Локатор блока "Соусы"
     @FindBy(how = How.XPATH, using = ".//h2[text()='Соусы']")
-    private SelenideElement menuSectionSauce;
+    private SelenideElement menuSectionSauces;
     // Локатор названия раздела "Начинки"
     @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
-    private SelenideElement headerSectionFilling;
+    private SelenideElement headerSectionFillings;
+    // Локатор блока выбранного раздела "Начинки"
+    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']/..")
+    private SelenideElement headerSelectedSectionFillings;
     // Локатор блока "Начинки"
     @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
-    private SelenideElement menuSectionFilling;
+    private SelenideElement menuSectionFillings;
 
     // Метод нажатия на кнопку "Личный кабинет"
     @Step("click on the \"Personal Account\" button")
@@ -90,38 +101,56 @@ public class MainPage {
     }
 
     // Метод нажатия на раздел Булки
-    @Step("click on the section Bun")
-    public void clickOnBunSection() {
-        headerSectionBun.shouldBe(Condition.exist).click();
+    @Step("click on the section Buns")
+    public void clickOnBunsSection() {
+        headerSectionBuns.shouldBe(Condition.exist).click();
+    }
+
+    // Метод получения названия блока выбранного раздела Булки
+    @Step("get classname from the section Buns")
+    public String constructorBunsSection() {
+        return headerSelectedSectionBuns.shouldBe(Condition.exist).toString();
     }
 
     // Метод отображения в конструкторе раздела Булки
-    @Step("section Bun is displayed")
-    public boolean displayedBunSection() {
-        return menuSectionBun.shouldBe(Condition.visible).isDisplayed();
+    @Step("section Buns is displayed")
+    public boolean displayedBunsSection() {
+        return menuSectionBuns.shouldBe(Condition.visible).isDisplayed();
     }
 
     // Метод нажатия на раздел Соусы
-    @Step("click on the section Sauce")
-    public void clickOnSauceSection() {
-        headerSectionSauce.shouldBe(Condition.exist).click();
+    @Step("click on the section Sauces")
+    public void clickOnSaucesSection() {
+        headerSectionSauces.shouldBe(Condition.exist).click();
+    }
+
+    // Метод получения названия блока выбранного раздела Соусы
+    @Step("get classname from the section Sauces")
+    public String constructorSaucesSection() {
+        return headerSelectedSectionSauces.shouldBe(Condition.exist).toString();
     }
 
     // Метод отображения в конструкторе раздела Соусы
-    @Step("section Sauce is displayed")
-    public boolean displayedSauceSection() {
-        return menuSectionSauce.shouldBe(Condition.visible).isDisplayed();
+    @Step("section Sauces is displayed")
+    public boolean displayedSaucesSection() {
+        return menuSectionSauces.shouldBe(Condition.visible).isDisplayed();
     }
 
     // Метод нажатия на раздел Начинки
-    @Step("click on the section Filling")
-    public void clickOnFillingSection() {
-        headerSectionFilling.shouldBe(Condition.exist).click();
+    @Step("click on the section Fillings")
+    public void clickOnFillingsSection() {
+        headerSectionFillings.shouldBe(Condition.exist).click();
+    }
+
+    // Метод получения названия блока выбранного раздела Начинки
+    @Step("get classname from the section Fillings")
+    public String constructorFillingsSection() {
+        return headerSelectedSectionFillings.shouldBe(Condition.exist).toString();
     }
 
     // Метод отображения в конструкторе раздела Начинки
-    @Step("section Filling is displayed")
+    @Step("section Fillings is displayed")
     public boolean displayedFillingSection() {
-        return menuSectionFilling.shouldBe(Condition.visible).isDisplayed();
+        return menuSectionFillings.shouldBe(Condition.visible).isDisplayed();
     }
 }

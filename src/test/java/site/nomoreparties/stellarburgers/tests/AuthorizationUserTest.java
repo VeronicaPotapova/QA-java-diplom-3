@@ -1,13 +1,14 @@
-package site.nomoreparties.stellarburgers;
+package site.nomoreparties.stellarburgers.tests;
 
 import com.UserOperations;
 import io.qameta.allure.junit4.DisplayName;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import site.nomoreparties.stellarburgers.*;
 
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AuthorizationUserTest extends BaseCondition {
 
@@ -28,7 +29,7 @@ public class AuthorizationUserTest extends BaseCondition {
         LoginPage loginPage = page(LoginPage.class);
         loginPage.login(email, password);
 
-        MatcherAssert.assertThat("Log in is not possible",
+        assertThat("Log in is not possible",
                 mainPage.showButtonSetOrder());
     }
 
@@ -49,7 +50,7 @@ public class AuthorizationUserTest extends BaseCondition {
         LoginPage loginPage = page(LoginPage.class);
         loginPage.login(email, password);
 
-        MatcherAssert.assertThat("Log in is not possible",
+        assertThat("Log in is not possible",
                 mainPage.showButtonSetOrder());
     }
 
@@ -77,7 +78,7 @@ public class AuthorizationUserTest extends BaseCondition {
         // Авторизоваться
         loginPage.login(email, password);
 
-        MatcherAssert.assertThat("Log in is not possible",
+        assertThat("Log in is not possible",
                 mainPage.showButtonSetOrder());
     }
 
@@ -105,7 +106,7 @@ public class AuthorizationUserTest extends BaseCondition {
         // Авторизоваться
         loginPage.login(email, password);
 
-        MatcherAssert.assertThat("Log in is not possible",
+        assertThat("Log in is not possible",
                 mainPage.showButtonSetOrder());
     }
 
