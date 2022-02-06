@@ -1,6 +1,5 @@
 package site.nomoreparties.stellarburgers.tests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.BaseCondition;
