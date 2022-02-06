@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers.tests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.BaseCondition;
@@ -17,9 +18,8 @@ public class ConstructorCanBeChangeSectionsTest extends BaseCondition {
     public void canGoBunsSectionTest() {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickOnSaucesSection();
+        mainPage.scrollSaucesSection();
         mainPage.clickOnBunsSection();
-
-        System.out.println(mainPage.constructorBunsSection());
 
         assertThat("Section Buns can not be selected", mainPage.constructorBunsSection(),
                 anyOf(containsString(mainPage.partOfNameClass)));
@@ -32,8 +32,6 @@ public class ConstructorCanBeChangeSectionsTest extends BaseCondition {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickOnSaucesSection();
 
-        System.out.println(mainPage.constructorSaucesSection());
-
         assertThat("Section Sauces can not be selected", mainPage.constructorSaucesSection(),
                 anyOf(containsString(mainPage.partOfNameClass)));
         assertThat("Section can not be visible", mainPage.displayedSaucesSection());
@@ -44,8 +42,6 @@ public class ConstructorCanBeChangeSectionsTest extends BaseCondition {
     public void canGoFillingsSectionTest() {
         MainPage mainPage = page(MainPage.class);
         mainPage.clickOnFillingsSection();
-
-        System.out.println(mainPage.constructorFillingsSection());
 
         assertThat("Section Fillings can not be selected", mainPage.constructorFillingsSection(),
                 anyOf(containsString(mainPage.partOfNameClass)));

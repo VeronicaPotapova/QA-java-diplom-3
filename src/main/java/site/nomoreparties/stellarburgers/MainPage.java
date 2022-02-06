@@ -136,6 +136,12 @@ public class MainPage {
         return menuSectionSauces.shouldBe(Condition.visible).isDisplayed();
     }
 
+    // Метод проекрутки до раздела Соусы
+    @Step("scroll to section Sauces")
+    public void scrollSaucesSection() {
+        menuSectionSauces.scrollTo();
+    }
+
     // Метод нажатия на раздел Начинки
     @Step("click on the section Fillings")
     public void clickOnFillingsSection() {
